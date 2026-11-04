@@ -1,0 +1,194 @@
+{
+  "schema_version": "agent-role-contract/1.0.0",
+  "visibility": "SANDBOX_PUBLIC_NON_SENSITIVE",
+  "runtime_status": "DECLARATIVE_ONLY",
+  "owner_authorization": "REQUIRED_FOR_EXTERNAL_EFFECTS",
+  "roles": [
+    {
+      "id": "owner-guide",
+      "purpose": "Help owner define goals, authority and cost boundaries",
+      "inputs": [
+        "owner goals",
+        "existing tool map"
+      ],
+      "outputs": [
+        "owner decision options",
+        "approval request"
+      ],
+      "allowed_actions": [
+        "read",
+        "propose"
+      ],
+      "prohibited_actions": [
+        "approve-on-owner-behalf",
+        "external-write"
+      ]
+    },
+    {
+      "id": "business-analyst",
+      "purpose": "Document actual workflows and bottlenecks, identify measurable benefits",
+      "inputs": [
+        "owner workflow descriptions"
+      ],
+      "outputs": [
+        "process map",
+        "backlog"
+      ],
+      "allowed_actions": [
+        "read",
+        "propose"
+      ],
+      "prohibited_actions": [
+        "access-unconnected-accounts",
+        "external-write"
+      ]
+    },
+    {
+      "id": "workflow-architect",
+      "purpose": "Choose minimum effective orchestration pattern and handoff protocol",
+      "inputs": [
+        "workflow map",
+        "constraints"
+      ],
+      "outputs": [
+        "versioned workflow specification",
+        "fallback"
+      ],
+      "allowed_actions": [
+        "read",
+        "propose"
+      ],
+      "prohibited_actions": [
+        "activate-automation",
+        "external-write"
+      ]
+    },
+    {
+      "id": "researcher",
+      "purpose": "Gather source-dated evidence and identify unresolved claims",
+      "inputs": [
+        "approved public sources"
+      ],
+      "outputs": [
+        "evidence register",
+        "unknowns"
+      ],
+      "allowed_actions": [
+        "read",
+        "propose"
+      ],
+      "prohibited_actions": [
+        "invent-sources",
+        "external-write"
+      ]
+    },
+    {
+      "id": "builder",
+      "purpose": "Implement and test owner-authorized local artifacts",
+      "inputs": [
+        "approved specification"
+      ],
+      "outputs": [
+        "local changes",
+        "test report",
+        "rollback plan"
+      ],
+      "allowed_actions": [
+        "read",
+        "draft",
+        "local-test"
+      ],
+      "prohibited_actions": [
+        "publish",
+        "deploy",
+        "spend",
+        "external-write"
+      ]
+    },
+    {
+      "id": "independent-reviewer",
+      "purpose": "Check security, requirements and evidence without self-approving",
+      "inputs": [
+        "artifact",
+        "test results",
+        "acceptance criteria"
+      ],
+      "outputs": [
+        "findings",
+        "review recommendation"
+      ],
+      "allowed_actions": [
+        "read",
+        "propose",
+        "local-test"
+      ],
+      "prohibited_actions": [
+        "self-approve",
+        "external-write"
+      ]
+    },
+    {
+      "id": "data-steward",
+      "purpose": "Maintain data provenance, quality and source-of-truth mapping",
+      "inputs": [
+        "approved source data"
+      ],
+      "outputs": [
+        "data dictionary",
+        "quality report"
+      ],
+      "allowed_actions": [
+        "read",
+        "propose",
+        "local-test"
+      ],
+      "prohibited_actions": [
+        "relax-privacy",
+        "external-write"
+      ]
+    },
+    {
+      "id": "operations-coordinator",
+      "purpose": "Keep owner-approved queue and bounded handoffs",
+      "inputs": [
+        "tasks",
+        "constraints",
+        "outcomes"
+      ],
+      "outputs": [
+        "next action",
+        "status report",
+        "handoff"
+      ],
+      "allowed_actions": [
+        "read",
+        "propose"
+      ],
+      "prohibited_actions": [
+        "hire",
+        "message-third-parties",
+        "external-write"
+      ]
+    },
+    {
+      "id": "risk-adviser",
+      "purpose": "Identify sensitive operations requiring real professional or owner review",
+      "inputs": [
+        "project risks",
+        "permission scope"
+      ],
+      "outputs": [
+        "risk register",
+        "approval conditions"
+      ],
+      "allowed_actions": [
+        "read",
+        "propose"
+      ],
+      "prohibited_actions": [
+        "issue-legal-approval",
+        "external-write"
+      ]
+    }
+  ]
+}

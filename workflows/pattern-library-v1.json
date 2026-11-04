@@ -1,0 +1,182 @@
+{
+  "schema_version": "workflow-pattern-library/1.0.0",
+  "visibility": "SANDBOX_PUBLIC_NON_SENSITIVE",
+  "default_pattern": "manual-first",
+  "patterns": [
+    {
+      "id": "manual-first",
+      "kind": "deterministic",
+      "when": "New or poorly understood workflow; no proven benefit to automation",
+      "roles": [
+        "owner-guide",
+        "business-analyst"
+      ],
+      "steps": [
+        "capture trigger/input/actor/output",
+        "manual task",
+        "owner verifies result",
+        "record lesson"
+      ],
+      "fallback": "Continue manual checklist",
+      "human_gate": "Any external effect needs owner action",
+      "success_measure": "fewer missed requests"
+    },
+    {
+      "id": "single-agent-with-tools",
+      "kind": "agent",
+      "when": "One bounded request requiring reasoning or a limited tool lookup",
+      "roles": [
+        "business-analyst"
+      ],
+      "steps": [
+        "intake",
+        "bound tool scope",
+        "retrieve/draft",
+        "check evidence",
+        "present result"
+      ],
+      "fallback": "Manual operator resolves tool failure",
+      "human_gate": "Owner authorizes external write",
+      "success_measure": "correct output with cited evidence"
+    },
+    {
+      "id": "router-specialist",
+      "kind": "handoff",
+      "when": "Distinct domains require separate specialist instructions or access",
+      "roles": [
+        "operations-coordinator",
+        "workflow-architect",
+        "risk-adviser"
+      ],
+      "steps": [
+        "classify and scope",
+        "select one authorized specialist",
+        "handoff with context",
+        "specialist responds",
+        "log outcome"
+      ],
+      "fallback": "Return to coordinator on ambiguity or routing loop",
+      "human_gate": "Recheck authorization at receiving specialist",
+      "success_measure": "correct routing with no permission drift"
+    },
+    {
+      "id": "sequential-pipeline",
+      "kind": "workflow",
+      "when": "Output of each step is a necessary input to the next",
+      "roles": [
+        "business-analyst",
+        "builder",
+        "independent-reviewer"
+      ],
+      "steps": [
+        "specification",
+        "implementation draft",
+        "verification",
+        "owner review"
+      ],
+      "fallback": "Stop at last verified checkpoint; retain earlier outputs",
+      "human_gate": "Owner approves any remote deployment or publication",
+      "success_measure": "stage-specific defect escape rate"
+    },
+    {
+      "id": "parallel-independent",
+      "kind": "workflow",
+      "when": "Independent evidence streams benefit from concurrent bounded research",
+      "roles": [
+        "researcher",
+        "data-steward",
+        "independent-reviewer"
+      ],
+      "steps": [
+        "partition independent tasks",
+        "gather evidence separately",
+        "deduplicate",
+        "resolve contradictions",
+        "synthesize"
+      ],
+      "fallback": "Use available branches; mark unsearched authorities",
+      "human_gate": "No research worker gets write authority",
+      "success_measure": "coverage with source provenance"
+    },
+    {
+      "id": "manager-workers",
+      "kind": "agent",
+      "when": "Complex task has unpredictable subtasks with a bounded time/cost budget",
+      "roles": [
+        "operations-coordinator",
+        "researcher",
+        "builder"
+      ],
+      "steps": [
+        "break down objective",
+        "assign bounded work units",
+        "collect receipts",
+        "integrate",
+        "check acceptance"
+      ],
+      "fallback": "Stop when cost/time cap reached and preserve partial work",
+      "human_gate": "Manager cannot approve external actions or delegate more access",
+      "success_measure": "accepted tasks per cost and elapsed time"
+    },
+    {
+      "id": "evaluator-optimizer",
+      "kind": "workflow",
+      "when": "Clear measurable quality rubric and revision improves outputs",
+      "roles": [
+        "builder",
+        "independent-reviewer"
+      ],
+      "steps": [
+        "draft",
+        "independent score",
+        "bounded repair",
+        "recheck",
+        "owner review"
+      ],
+      "fallback": "Stop after defined iteration cap",
+      "human_gate": "No self-certifying promotion",
+      "success_measure": "objective quality change versus baseline"
+    },
+    {
+      "id": "event-driven-sync",
+      "kind": "deterministic",
+      "when": "Verified source change must propagate without silent loss or duplicate events",
+      "roles": [
+        "data-steward",
+        "operations-coordinator"
+      ],
+      "steps": [
+        "detect versioned source change",
+        "dedupe event",
+        "commit durable idempotent write",
+        "readback",
+        "advance cursor",
+        "alert lag"
+      ],
+      "fallback": "Retry with backoff, dead-letter and manual recovery without cursor advance",
+      "human_gate": "Owner authorizes connector/schedule; no duplicate writers",
+      "success_measure": "sync lag and replay duplication count"
+    },
+    {
+      "id": "human-gated-action",
+      "kind": "workflow",
+      "when": "Operation affects money, customer data, publication, permissions or deletion",
+      "roles": [
+        "owner-guide",
+        "risk-adviser",
+        "builder"
+      ],
+      "steps": [
+        "prepare exact target",
+        "show consequences and rollback",
+        "collect owner authorization",
+        "verify tool scope",
+        "execute once",
+        "readback"
+      ],
+      "fallback": "Remain in proposed state",
+      "human_gate": "Specific owner approval immediately before external effect",
+      "success_measure": "zero unauthorized changes"
+    }
+  ]
+}
