@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "meaning": "Potential tool classes. No connection or access is implied.",
+  "tools": [
+    {
+      "kind": "github",
+      "use": "repositories, issues, pull requests",
+      "default_scope": "read-only",
+      "activation": "owner-consented"
+    },
+    {
+      "kind": "drive",
+      "use": "document sources and collaboration",
+      "default_scope": "read-only",
+      "activation": "owner-consented"
+    },
+    {
+      "kind": "calendar",
+      "use": "events and deadlines",
+      "default_scope": "read-only",
+      "activation": "owner-consented"
+    },
+    {
+      "kind": "email",
+      "use": "request intake and drafts",
+      "default_scope": "no access",
+      "activation": "owner-consented"
+    },
+    {
+      "kind": "runtime",
+      "use": "local tests and document generation",
+      "default_scope": "isolated local files",
+      "activation": "available only when host supports it"
+    },
+    {
+      "kind": "automation",
+      "use": "scheduled checks",
+      "default_scope": "disabled",
+      "activation": "separate owner approval with stop rule"
+    }
+  ]
+}

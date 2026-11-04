@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "business": {
+    "name": "Cedarline Services",
+    "owner_login": "example-owner",
+    "mission": "Improve customer request handling and repeatable service delivery"
+  },
+  "constraints": {
+    "cost_ceiling": "free",
+    "privacy": "private",
+    "team_mode": "solo"
+  },
+  "capabilities": [
+    "knowledge-base",
+    "integrations"
+  ],
+  "workflows": [
+    {
+      "name": "New request intake",
+      "trigger": "client request",
+      "input": "owner-reported request",
+      "output": "reviewable task",
+      "manual_fallback": true
+    },
+    {
+      "name": "Knowledge updates",
+      "trigger": "process changed",
+      "input": "owner note",
+      "output": "versioned SOP",
+      "manual_fallback": true
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "description": "Role packages; not active agent processes",
+  "roles": [
+    {
+      "id": "discovery",
+      "goal": "Interview owner and produce evidence-labeled manifest",
+      "reads": [
+        "owner-approved business context"
+      ],
+      "writes": [
+        "proposals"
+      ],
+      "remote_actions": false
+    },
+    {
+      "id": "architect",
+      "goal": "Design repo topology, dependencies and sources of truth",
+      "reads": [
+        "approved manifest"
+      ],
+      "writes": [
+        "plans"
+      ],
+      "remote_actions": false
+    },
+    {
+      "id": "workflow-designer",
+      "goal": "Map process and failure recovery without prematurely automating",
+      "reads": [
+        "owner process descriptions"
+      ],
+      "writes": [
+        "SOP drafts"
+      ],
+      "remote_actions": false
+    },
+    {
+      "id": "implementation",
+      "goal": "Build code and local tests for owner-approved tasks",
+      "reads": [
+        "scoped specifications"
+      ],
+      "writes": [
+        "local files or authorized branches"
+      ],
+      "remote_actions": false
+    },
+    {
+      "id": "independent-auditor",
+      "goal": "Check safety, requirements, CI evidence and conflicting authority",
+      "reads": [
+        "diffs",
+        "run results"
+      ],
+      "writes": [
+        "review findings"
+      ],
+      "remote_actions": false
+    },
+    {
+      "id": "collaboration",
+      "goal": "Prepare handoffs and collaboration requests",
+      "reads": [
+        "tasks and permissions"
+      ],
+      "writes": [
+        "proposed handoffs"
+      ],
+      "remote_actions": false
+    }
+  ]
+}
