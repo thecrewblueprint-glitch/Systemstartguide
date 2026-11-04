@@ -38,6 +38,14 @@ Use **few repositories first**. The local generator proposes three core reposito
 - [scripts/bootstrap.py](scripts/bootstrap.py): local deterministic generator
 - [tests/test_bootstrap.py](tests/test_bootstrap.py): acceptance tests
 
+## Current research experiment
+
+- [AI agent roles and future business workflow study](docs/AGENT_ROLE_WORKFLOW_STUDY_2026-11-03.md)
+- [Machine-readable role contracts](agentpacks/role-contract-v1.json) and [workflow pattern library](workflows/pattern-library-v1.json)
+- [Role/pattern contract tests](tests/test_agent_pattern_contracts.py)
+
+These are **research artifacts**, not active or permanently running workers. This sandbox is not an ecosystem source.
+
 ## Independence / portability
 
 This build includes no Deadhang, employment, financial, or proprietary account data. It is standalone and does not import another ecosystem or agent build. Replace the agent provider at any time; GitHub files remain the portable source of truth.
