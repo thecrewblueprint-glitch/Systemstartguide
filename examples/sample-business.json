@@ -1,0 +1,13 @@
+{
+  "business_name": "Northstar Studio",
+  "owner_login": "example-owner",
+  "description": "Small client-service business looking to improve requests, project delivery and knowledge management",
+  "workflows": [
+    "request-intake",
+    "project-delivery"
+  ],
+  "optional_domains": [
+    "automation"
+  ],
+  "visibility": "private"
+}
